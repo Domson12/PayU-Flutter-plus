@@ -4,7 +4,7 @@ description: Flutter package with Payu interface which allows to access the main
 version: 1.0.2
 publish_to: none
 
-homepage: https://github.com/PayU-EMEA/PayU-Flutter
+homepage: https://github.com/Domson12/PayU-Flutter-plus
 issue_tracker: https://github.com/PayU-EMEA/PayU-Flutter/issues
 
 environment:

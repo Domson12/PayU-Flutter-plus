@@ -1,24 +1,24 @@
 payu_api:
   git:
-    url: https://github.com/PayU-EMEA/PayU-Flutter.git
+    url: https://github.com/Domson12/PayU-Flutter-plus
     path: payu_api
 payu_core:
   git:
-    url: https://github.com/PayU-EMEA/PayU-Flutter.git
+    url: https://github.com/Domson12/PayU-Flutter-plus
     path: payu_core
 payu_state_management:
   git:
-    url: https://github.com/PayU-EMEA/PayU-Flutter.git
+    url: https://github.com/Domson12/PayU-Flutter-plus
     path: payu_state_management
 payu_terms_and_conditions:
   git:
-    url: https://github.com/PayU-EMEA/PayU-Flutter.git
+    url: https://github.com/Domson12/PayU-Flutter-plus
     path: payu_terms_and_conditions
 payu_translations:
   git:
-    url: https://github.com/PayU-EMEA/PayU-Flutter.git
+    url: https://github.com/Domson12/PayU-Flutter-plus
     path: payu_translations
 payu_ui:
   git:
-    url: https://github.com/PayU-EMEA/PayU-Flutter.git
+    url: https://github.com/Domson12/PayU-Flutter-plus
     path: payu_ui
