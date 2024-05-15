@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:payu_core/payu_core.dart';
 import 'package:payu_state_management/payu_state_management.dart';
 import 'package:payu_terms_and_conditions/payu_terms_and_conditions.dart';
@@ -18,13 +17,14 @@ class AddCardPage extends StatefulWidget {
   State<AddCardPage> createState() => _AddCardPageState();
 }
 
-class _AddCardPageState extends State<AddCardPage> with AddCardPageControllerDelegate {
+class _AddCardPageState extends State<AddCardPage>
+    with AddCardPageControllerDelegate {
   @override
   Widget build(BuildContext context) {
     return PayuWidget<AddCardPageController, AddCardPageAssembler>(
       assembler: () => AddCardPageAssembler(this),
       builder: (context, controller) => Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         appBar: AppBar(
           title: PayuImage.logo(),
         ),
@@ -41,7 +41,8 @@ class _AddCardPageState extends State<AddCardPage> with AddCardPageControllerDel
                 child: Column(
                   children: [
                     AddCardWidget(
-                      onCreated: (service) => controller.didUpdateService(service),
+                      onCreated: (service) =>
+                          controller.didUpdateService(service),
                       configuration: AddCardWidgetConfiguration.payu(),
                     ),
                     const SizedBox(
