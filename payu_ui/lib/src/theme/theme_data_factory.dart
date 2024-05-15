@@ -6,7 +6,8 @@ import 'theme_text_styles.dart';
 
 class ThemeDataFactory {
   static ThemeData platform() {
-    return SchedulerBinding.instance.window.platformBrightness == Brightness.dark
+    return SchedulerBinding.instance.window.platformBrightness ==
+            Brightness.dark
         ? ThemeDataFactory.dark()
         : ThemeDataFactory.light();
   }
@@ -22,13 +23,12 @@ class ThemeDataFactory {
   static ThemeData _data(ThemeColorsPallete pallete) {
     return ThemeData(
       appBarTheme: _appBarTheme(pallete),
-      backgroundColor: pallete.secondaryGray4,
       buttonTheme: _buttonTheme(pallete),
       cardTheme: _cardTheme(pallete),
       colorScheme: _colorScheme(pallete),
       dialogBackgroundColor: pallete.secondaryGray4,
       inputDecorationTheme: _inputDecorationTheme(pallete),
-      primaryColor: pallete.primary2,
+      primaryColor: pallete.secondaryGray4,
       textTheme: _textTheme(pallete),
     );
   }
@@ -38,7 +38,8 @@ class ThemeDataFactory {
       actionsIconTheme: _iconTheme(pallete),
       backgroundColor: pallete.secondaryGray4,
       iconTheme: _iconTheme(pallete),
-      titleTextStyle: ThemeTextStyles.headline6.copyWith(color: pallete.primary2),
+      titleTextStyle:
+          ThemeTextStyles.headline6.copyWith(color: pallete.primary2),
     );
   }
 
@@ -93,14 +94,16 @@ class ThemeDataFactory {
     );
   }
 
-  static InputBorder _inputBorder(ThemeColorsPallete pallete, {required Color color}) {
+  static InputBorder _inputBorder(ThemeColorsPallete pallete,
+      {required Color color}) {
     return OutlineInputBorder(
       borderSide: _borderSide(color: color),
       borderRadius: _borderRadius(),
     );
   }
 
-  static InputDecorationTheme _inputDecorationTheme(ThemeColorsPallete pallete) {
+  static InputDecorationTheme _inputDecorationTheme(
+      ThemeColorsPallete pallete) {
     return InputDecorationTheme(
       floatingLabelBehavior: FloatingLabelBehavior.always,
       // borders
@@ -112,22 +115,33 @@ class ThemeDataFactory {
       enabledBorder: _inputBorder(pallete, color: pallete.secondaryGray3),
       // text
       errorStyle: ThemeTextStyles.overline.copyWith(color: pallete.tertiary2),
-      helperStyle: ThemeTextStyles.overline.copyWith(color: pallete.secondaryGray2),
-      hintStyle: ThemeTextStyles.bodyText2.copyWith(color: pallete.secondaryGray2),
-      labelStyle: ThemeTextStyles.overline.copyWith(color: pallete.secondaryGray1),
+      helperStyle:
+          ThemeTextStyles.overline.copyWith(color: pallete.secondaryGray2),
+      hintStyle:
+          ThemeTextStyles.bodyText2.copyWith(color: pallete.secondaryGray2),
+      labelStyle:
+          ThemeTextStyles.overline.copyWith(color: pallete.secondaryGray1),
     );
   }
 
   static TextTheme _textTheme(ThemeColorsPallete pallete) {
     return TextTheme(
-      headline6: ThemeTextStyles.headline6.copyWith(color: pallete.secondaryGray1),
-      subtitle1: ThemeTextStyles.subtitle1.copyWith(color: pallete.secondaryGray1),
-      subtitle2: ThemeTextStyles.subtitle2.copyWith(color: pallete.secondaryGray2),
-      bodyText1: ThemeTextStyles.bodyText1.copyWith(color: pallete.secondaryGray1),
-      bodyText2: ThemeTextStyles.bodyText2.copyWith(color: pallete.secondaryGray2),
-      caption: ThemeTextStyles.caption.copyWith(color: pallete.secondaryGray2),
-      button: ThemeTextStyles.button.copyWith(color: pallete.secondaryGray3),
-      overline: ThemeTextStyles.overline.copyWith(color: pallete.secondaryGray1),
+      displaySmall:
+          ThemeTextStyles.headline6.copyWith(color: pallete.secondaryGray1),
+      headlineSmall:
+          ThemeTextStyles.subtitle1.copyWith(color: pallete.secondaryGray1),
+      headlineMedium:
+          ThemeTextStyles.subtitle2.copyWith(color: pallete.secondaryGray2),
+      bodySmall:
+          ThemeTextStyles.bodyText1.copyWith(color: pallete.secondaryGray1),
+      bodyMedium:
+          ThemeTextStyles.bodyText2.copyWith(color: pallete.secondaryGray2),
+      labelLarge:
+          ThemeTextStyles.headline6.copyWith(color: pallete.secondaryGray1),
+      labelMedium:
+          ThemeTextStyles.subtitle2.copyWith(color: pallete.secondaryGray2),
+      labelSmall:
+          ThemeTextStyles.bodyText1.copyWith(color: pallete.secondaryGray1),
     );
   }
 }

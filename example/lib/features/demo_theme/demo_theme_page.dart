@@ -1,9 +1,7 @@
+import 'package:example/features/demo_theme/demo_theme_controller.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:payu/payu.dart';
-
-import 'package:example/features/demo_theme/demo_theme_controller.dart';
 
 class DemoThemePage extends GetView<DemoThemeController> {
   static const _awesomeColor = Colors.amber;
@@ -17,14 +15,17 @@ class DemoThemePage extends GetView<DemoThemeController> {
     return Theme(
       data: theme.copyWith(
         appBarTheme: theme.appBarTheme.copyWith(
-          actionsIconTheme: theme.appBarTheme.actionsIconTheme?.copyWith(color: _awesomeColor),
-          iconTheme: theme.appBarTheme.iconTheme?.copyWith(color: _awesomeColor),
-          titleTextStyle: theme.appBarTheme.titleTextStyle?.copyWith(color: _awesomeColor),
+          actionsIconTheme: theme.appBarTheme.actionsIconTheme
+              ?.copyWith(color: _awesomeColor),
+          iconTheme:
+              theme.appBarTheme.iconTheme?.copyWith(color: _awesomeColor),
+          titleTextStyle:
+              theme.appBarTheme.titleTextStyle?.copyWith(color: _awesomeColor),
         ),
         colorScheme: theme.colorScheme.copyWith(primary: _awesomeColor),
       ),
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(
           title: PayuImage.logo(),
           leading: IconButton(

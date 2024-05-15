@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:payu_state_management/payu_state_management.dart';
 import 'package:payu_ui/payu_ui.dart';
 
@@ -10,20 +9,22 @@ import 'pbl_payment_methods_controller.dart';
 class PBLPaymentMethodsPage extends StatelessWidget {
   final PaymentMethodsConfiguration configuration;
 
-  const PBLPaymentMethodsPage({Key? key, required this.configuration}) : super(key: key);
+  const PBLPaymentMethodsPage({Key? key, required this.configuration})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return PayuWidget<PBLPaymentMethodsController, PBLPaymentMethodsAssembler>(
       assembler: () => PBLPaymentMethodsAssembler(configuration),
       builder: (context, controller) => Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(
           title: PayuImage.logo(),
         ),
         body: GridView.builder(
           padding: const EdgeInsets.all(PayuPadding.padding8),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3),
           itemCount: controller.items.length,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.all(PayuPadding.padding4),
@@ -31,7 +32,8 @@ class PBLPaymentMethodsPage extends StatelessWidget {
               opacity: controller.items[index].enabled ? 1 : 0.25,
               child: Card(
                 child: InkWell(
-                  onTap: () => Navigator.of(context).pop(controller.items[index].value),
+                  onTap: () =>
+                      Navigator.of(context).pop(controller.items[index].value),
                   enableFeedback: false,
                   child: Padding(
                     padding: const EdgeInsets.all(PayuPadding.padding8),

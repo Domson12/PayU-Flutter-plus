@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:payu_state_management/payu_state_management.dart';
 import 'package:payu_terms_and_conditions/payu_terms_and_conditions.dart';
 import 'package:payu_translations/payu_translations.dart';
@@ -17,10 +16,10 @@ class AddCardWidget extends StatelessWidget {
   final Function(AddCardService) onCreated;
 
   const AddCardWidget({
-    Key? key,
+    super.key,
     required this.configuration,
     required this.onCreated,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +38,18 @@ class AddCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: PayuPadding.padding8),
+                padding:
+                    const EdgeInsets.symmetric(vertical: PayuPadding.padding8),
                 child: Row(
                   children: [
                     Text(
                       'new_card'.translated(),
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(left: PayuPadding.padding16),
+                        padding:
+                            const EdgeInsets.only(left: PayuPadding.padding16),
                         child: Container(
                           height: 1,
                           color: PayuColors.secondaryGray3,
@@ -68,7 +69,8 @@ class AddCardWidget extends StatelessWidget {
                       .map(
                         (e) => Opacity(
                           opacity: e == controller.cardProvider ? 1 : 0.25,
-                          child: PayuFadeInImage(uri: e.brandImageProvider.light, size: 48),
+                          child: PayuFadeInImage(
+                              uri: e.brandImageProvider.light, size: 48),
                         ),
                       )
                       .toList(),
@@ -99,7 +101,8 @@ class AddCardWidget extends StatelessWidget {
               Visibility(
                 visible: configuration.isFooterVisible,
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: PayuPadding.padding16),
+                  padding:
+                      EdgeInsets.symmetric(vertical: PayuPadding.padding16),
                   child: SizedBox(
                     width: double.maxFinite,
                     child: TermsAndConditionsWidget(),

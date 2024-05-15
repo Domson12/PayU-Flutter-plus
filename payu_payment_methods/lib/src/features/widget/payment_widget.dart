@@ -22,20 +22,21 @@ class PaymentMethodsWidget extends StatelessWidget {
   final Function(PaymentMethod) onSelect;
 
   const PaymentMethodsWidget({
-    Key? key,
+    super.key,
     required this.configuration,
     required this.service,
     required this.storage,
     required this.listener,
     required this.onSelect,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return PayuWidget<PaymentWidgetController, PaymentWidgetAssembler>(
-      assembler: () => PaymentWidgetAssembler(configuration, service, storage, listener),
+      assembler: () =>
+          PaymentWidgetAssembler(configuration, service, storage, listener),
       builder: (context, controller) => Container(
-        color: Theme.of(context).backgroundColor,
+        color: Theme.of(context).primaryColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: PayuPadding.padding4,
@@ -44,7 +45,8 @@ class PaymentMethodsWidget extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () async {
-                  final result = await Navigator.of(context).push<PaymentMethod>(
+                  final result =
+                      await Navigator.of(context).push<PaymentMethod>(
                     MaterialPageRoute(
                       builder: (context) => PaymentMethodsPage(
                         configuration: configuration,
@@ -66,9 +68,12 @@ class PaymentMethodsWidget extends StatelessWidget {
                         children: [
                           const _Logo(),
                           const _Divider(),
-                          if (controller.selected == null) _Empty(controller: controller),
-                          if (controller.selected != null) _Icon(controller: controller),
-                          if (controller.selected != null) _Info(controller: controller),
+                          if (controller.selected == null)
+                            _Empty(controller: controller),
+                          if (controller.selected != null)
+                            _Icon(controller: controller),
+                          if (controller.selected != null)
+                            _Info(controller: controller),
                         ],
                       ),
                     ),
@@ -76,8 +81,10 @@ class PaymentMethodsWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              if (controller.state == PaymentWidgetState.blikCode) _BlikCode(controller: controller),
-              if (controller.state == PaymentWidgetState.blikToken) _BlikToken(controller: controller),
+              if (controller.state == PaymentWidgetState.blikCode)
+                _BlikCode(controller: controller),
+              if (controller.state == PaymentWidgetState.blikToken)
+                _BlikToken(controller: controller),
             ],
           ),
         ),
@@ -122,7 +129,7 @@ class _Empty extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Text(
         'select_payment_method'.translated(),
-        style: Theme.of(context).textTheme.subtitle2,
+        style: Theme.of(context).textTheme.headlineSmall,
         overflow: TextOverflow.ellipsis,
         maxLines: 1,
       ),
@@ -165,7 +172,7 @@ class _Info extends StatelessWidget {
               Flexible(
                 child: Text(
                   controller.name ?? '',
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.headlineSmall,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                 ),
@@ -173,7 +180,7 @@ class _Info extends StatelessWidget {
             if (controller.description != null)
               Text(
                 controller.description!,
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodySmall,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               )

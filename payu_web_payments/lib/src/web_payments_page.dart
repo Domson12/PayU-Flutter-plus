@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:payu_core/payu_core.dart';
 import 'package:payu_state_management/payu_state_management.dart';
 import 'package:payu_translations/payu_translations.dart';
@@ -13,13 +12,14 @@ import 'web_payments_controller.dart';
 class WebPaymentsPage extends StatefulWidget {
   final WebPaymentsRequest request;
 
-  const WebPaymentsPage({Key? key, required this.request}) : super(key: key);
+  const WebPaymentsPage({super.key, required this.request});
 
   @override
   State<WebPaymentsPage> createState() => _WebPaymentsPageState();
 }
 
-class _WebPaymentsPageState extends State<WebPaymentsPage> with WebPaymentsControllerDelegate {
+class _WebPaymentsPageState extends State<WebPaymentsPage>
+    with WebPaymentsControllerDelegate {
   late final assembler = WebPaymentsAssembler(this, widget.request);
   late final controller = assembler.find<WebPaymentsController>();
 
@@ -28,7 +28,7 @@ class _WebPaymentsPageState extends State<WebPaymentsPage> with WebPaymentsContr
     return PayuWidget<WebPaymentsController, WebPaymentsAssembler>(
       assembler: () => assembler,
       builder: (context, controller) => Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(
           title: PayuImage.logo(),
           bottom: PreferredSize(
@@ -42,12 +42,16 @@ class _WebPaymentsPageState extends State<WebPaymentsPage> with WebPaymentsContr
                 children: [
                   Icon(
                     PayuIcon.lock,
-                    color: controller.isSecureUri ? PayuColors.primary2 : PayuColors.tertiary2,
+                    color: controller.isSecureUri
+                        ? PayuColors.primary2
+                        : PayuColors.tertiary2,
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(left: PayuPadding.padding8),
-                      child: Text(controller.uri.toString(), maxLines: 1, overflow: TextOverflow.ellipsis),
+                      padding:
+                          const EdgeInsets.only(left: PayuPadding.padding8),
+                      child: Text(controller.uri.toString(),
+                          maxLines: 1, overflow: TextOverflow.ellipsis),
                     ),
                   )
                 ],
@@ -59,10 +63,13 @@ class _WebPaymentsPageState extends State<WebPaymentsPage> with WebPaymentsContr
           ),
         ),
         body: WebView(
-          onWebViewCreated: (webViewController) => controller.didUpdateWebViewController(webViewController),
-          onWebResourceError: (error) => controller.didUpdateWebResourceError(error),
+          onWebViewCreated: (webViewController) =>
+              controller.didUpdateWebViewController(webViewController),
+          onWebResourceError: (error) =>
+              controller.didUpdateWebResourceError(error),
           initialUrl: controller.initialUri,
-          navigationDelegate: (request) => controller.navigationDecision(request.url),
+          navigationDelegate: (request) =>
+              controller.navigationDecision(request.url),
           onPageStarted: (uri) => controller.didStartNavigation(uri),
           onPageFinished: (uri) => controller.didFinishNavigation(uri),
           javascriptMode: JavascriptMode.unrestricted,
